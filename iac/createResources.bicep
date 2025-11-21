@@ -288,7 +288,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     }
   }
 
-  // secret
+  /* secret
   resource kv_secretVnetAcaSubnetId 'secrets' = if (deployPrivateEndpoints) {
     name: kvSecretNameVnetAcaSubnetId
     tags: resourceTags
@@ -297,6 +297,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
       value: deployPrivateEndpoints ? vnet.properties.subnets[0].id : ''
     }
   }
+*/
 
   // access policies
   resource kv_accesspolicies 'accessPolicies' = {
