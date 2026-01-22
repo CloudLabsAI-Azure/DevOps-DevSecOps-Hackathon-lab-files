@@ -223,9 +223,10 @@ jobs:
           AKS_CPU_LIMIT: ${{ env.AKS_CPU_LIMIT }}
           AKS_MEMORY_LIMIT: ${{ env.AKS_MEMORY_LIMIT }}
       - name: lint deployment manifest
-        uses: azure/k8s-lint@v2.0
+        uses: docker://ghcr.io/yannh/kubeconform:latest
         with:
-          manifests: ./src/ContosoTraders.Api.Products/Manifests/Deployment.yaml
+          entrypoint: '/kubeconform'
+          args: "-summary -output json ./src/ContosoTraders.Api.Products/Manifests/Deployment.yaml"
       - name: apply deployment manifest
         uses: Azure/k8s-deploy@v4
         with:
